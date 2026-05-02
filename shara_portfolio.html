@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shara Dlshad — Brand & Visual Identity Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #0e3d23;
+    --green-mid: #165c35;
+    --pink: #ff9de0;
+    --pink-light: #ffd6f3;
+    --white: #f5f0eb;
+    --cream: #f0e8dd;
+    --dark: #0a2418;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--green);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: rgba(14,61,35,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,157,224,0.15);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--pink);
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--pink); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 48px 60px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 80% 40%, rgba(255,157,224,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 20% 70%, rgba(22,92,53,0.6) 0%, transparent 70%);
+  }
+
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .hero-inner {
+    position: relative;
+    text-align: center;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    border: 1px solid rgba(255,157,224,0.4);
+    padding: 7px 18px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 14vw, 160px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--white);
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  .hero-name span {
+    color: var(--pink);
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(20px, 3vw, 32px);
+    color: var(--pink-light);
+    margin-top: 16px;
+    opacity: 0.85;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-sub {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(245,240,235,0.55);
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  .hero-cta {
+    margin-top: 48px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+
+  .btn-primary {
+    background: var(--pink);
+    color: var(--green);
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(255,157,224,0.3);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(255,157,224,0.4);
+    color: var(--pink);
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover {
+    background: rgba(255,157,224,0.1);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.4;
+    animation: fadeUp 1s 1s ease both;
+  }
+  .hero-scroll span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: var(--pink);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 120px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 20px;
+  }
+
+  .about-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+
+  .about-heading em {
+    font-style: italic;
+    color: var(--pink);
+  }
+
+  .about-body {
+    font-size: 16px;
+    line-height: 1.85;
+    color: rgba(245,240,235,0.7);
+    margin-bottom: 20px;
+  }
+
+  .about-tools {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tool-tag {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid rgba(255,157,224,0.3);
+    border-radius: 100px;
+    color: var(--pink-light);
+  }
+
+  .about-visual {
+    aspect-ratio: 3/4;
+    background: var(--green-mid);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,157,224,0.12);
+  }
+
+  .about-visual-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+    background: linear-gradient(180deg, transparent 40%, rgba(14,61,35,0.9) 100%);
+  }
+
+  .about-stat {
+    display: flex;
+    gap: 40px;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--pink);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(245,240,235,0.5);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .about-monogram {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 180px;
+    color: rgba(255,157,224,0.06);
+    letter-spacing: -10px;
+    user-select: none;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    text-align: center;
+    padding: 100px 48px 60px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 90px);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  /* ── PROJECTS ── */
+  #projects {
+    padding: 0 48px 120px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 60px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,157,224,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  }
+
+  .project-card.reverse { direction: rtl; }
+  .project-card.reverse > * { direction: ltr; }
+
+  .project-image {
+    aspect-ratio: 4/3;
+    background: var(--green-mid);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-image-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    opacity: 0.1;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .project-image-note {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(255,157,224,0.5);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* Color themes per project */
+  .proj-gogiya .project-image { background: #2d1505; }
+  .proj-gogiya .project-image-label { color: #d4622a; opacity: 0.25; }
+
+  .proj-yumm .project-image { background: #0f1a3d; }
+  .proj-yumm .project-image-label { color: #3b5bdb; opacity: 0.25; }
+
+  .proj-eken .project-image { background: #2a1f14; }
+  .proj-eken .project-image-label { color: #c4a882; opacity: 0.25; }
+
+  .proj-cannonbet .project-image { background: #1a0a2e; }
+  .proj-cannonbet .project-image-label { color: #9b59b6; opacity: 0.25; }
+
+  .project-info {
+    background: var(--green-mid);
+    padding: 56px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .project-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--pink);
+    opacity: 0.6;
+    margin-bottom: 12px;
+  }
+
+  .project-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 6vw, 68px);
+    letter-spacing: 2px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .project-type {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--pink);
+    margin-bottom: 24px;
+  }
+
+  .project-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,157,224,0.3);
+    margin-bottom: 24px;
+  }
+
+  .project-brief {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(245,240,235,0.65);
+    margin-bottom: 32px;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .meta-pill {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    background: rgba(255,157,224,0.08);
+    border: 1px solid rgba(255,157,224,0.2);
+    border-radius: 100px;
+    color: var(--pink-light);
+  }
+
+  /* ── POSTER SECTION ── */
+  #posters {
+    background: var(--dark);
+    padding: 100px 48px;
+  }
+
+  .poster-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .poster-card {
+    aspect-ratio: 1;
+    background: #1a0a2e;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,157,224,0.08);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .poster-card:hover { transform: scale(1.02); }
+  .poster-card:first-child { grid-column: span 2; aspect-ratio: 2/1; }
+
+  .poster-inner {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    opacity: 0.12;
+    color: var(--pink);
+    text-align: center;
+  }
+
+  .poster-label {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255,157,224,0.4);
+    text-transform: uppercase;
+  }
+
+  /* ── SKILLS ── */
+  #skills {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .skill-card {
+    background: var(--green-mid);
+    border-radius: 16px;
+    padding: 36px 32px;
+    border: 1px solid rgba(255,157,224,0.1);
+    transition: border-color 0.3s;
+  }
+
+  .skill-card:hover { border-color: rgba(255,157,224,0.35); }
+
+  .skill-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .skill-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .skill-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(245,240,235,0.55);
+  }
+
+  .skill-tools {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tool {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    background: rgba(255,157,224,0.07);
+    border-radius: 100px;
+    color: var(--pink-light);
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--dark);
+    padding: 120px 48px;
+    text-align: center;
+  }
+
+  .contact-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .contact-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 10vw, 110px);
+    letter-spacing: 2px;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .contact-heading span { color: var(--pink); }
+
+  .contact-sub {
+    margin-top: 20px;
+    font-size: 16px;
+    color: rgba(245,240,235,0.5);
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 16px;
+    color: rgba(245,240,235,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item:hover { color: var(--pink); }
+
+  .contact-dot {
+    width: 6px; height: 6px;
+    background: var(--pink);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .social-row {
+    margin-top: 48px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .social-btn {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border: 1px solid rgba(255,157,224,0.25);
+    border-radius: 100px;
+    color: var(--pink);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .social-btn:hover {
+    background: rgba(255,157,224,0.1);
+    border-color: rgba(255,157,224,0.5);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,157,224,0.08);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--pink);
+  }
+
+  footer .copy {
+    font-size: 12px;
+    color: rgba(245,240,235,0.3);
+    letter-spacing: 1px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50%       { transform: scaleY(0.4); opacity: 0.4; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { gap: 20px; }
+    #about { grid-template-columns: 1fr; padding: 80px 24px; }
+    .about-visual { display: none; }
+    #projects { padding: 0 24px 80px; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-card.reverse { direction: ltr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .poster-grid { grid-template-columns: 1fr; }
+    .poster-card:first-child { grid-column: span 1; aspect-ratio: 1; }
+    #hero { padding: 100px 24px 60px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SD</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Brand & Visual Identity Designer · 2026</div>
+    <h1 class="hero-name">
+      Shara
+      <span>Dlshad</span>
+    </h1>
+    <p class="hero-title">Where imagination meets execution</p>
+    <p class="hero-sub">Crafting brand identities and visual systems that make people stop scrolling. Based in Sulaymaniyah, Iraq.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text">
+    <p class="about-label">About Me</p>
+    <h2 class="about-heading">
+      Self-taught.<br>
+      <em>Design-obsessed.</em>
+    </h2>
+    <p class="about-body">
+      I graduated in 2021 with a degree in agriculture — but creativity had other plans. 
+      Post-graduation, I immersed myself in learning Adobe Photoshop and Adobe Illustrator, 
+      discovering a deep passion for graphic design that quickly turned into a full career.
+    </p>
+    <p class="about-body">
+      I specialize in brand identity and visual systems — building the logos, color worlds, 
+      and touchpoints that make a brand instantly recognizable. I thrive on bringing creativity 
+      and innovation to every project I take on.
+    </p>
+    <div class="about-tools">
+      <span class="tool-tag">Adobe Illustrator</span>
+      <span class="tool-tag">Adobe Photoshop</span>
+      <span class="tool-tag">Brand Identity</span>
+      <span class="tool-tag">Visual Systems</span>
+      <span class="tool-tag">Logo Design</span>
+      <span class="tool-tag">Print & Packaging</span>
+    </div>
+  </div>
+  <div class="about-visual">
+    <div class="about-monogram">SD</div>
+    <div class="about-visual-inner">
+      <div class="about-stat">
+        <div>
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years of Design</div>
+        </div>
+        <div>
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Brand Projects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS HEADER -->
+<div class="section-header">
+  <p class="section-label">Selected Work</p>
+  <h2 class="section-title">Branding Projects</h2>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+
+  <!-- GOGIYA -->
+  <div class="project-card proj-gogiya">
+    <div class="project-image">
+      <div class="project-image-label">GOGIYA</div>
+      <div class="project-image-note">↑ Replace with your mockup images</div>
+    </div>
+    <div class="project-info">
+      <div class="project-number">01 / 04</div>
+      <h3 class="project-name">Gogiya</h3>
+      <p class="project-type">Korean BBQ Restaurant Branding</p>
+      <div class="project-divider"></div>
+      <p class="project-brief">
+        Full brand identity for a Korean BBQ restaurant — from logo and mascot design to packaging, 
+        menus, and digital presence. The playful chef character and warm earth tones communicate 
+        approachable authenticity while standing out in a competitive F&B market.
+      </p>
+      <div class="project-meta">
+        <span class="meta-pill">Logo Design</span>
+        <span class="meta-pill">Mascot</span>
+        <span class="meta-pill">Packaging</span>
+        <span class="meta-pill">Menu Design</span>
+        <span class="meta-pill">Web Mockup</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- YUMM -->
+  <div class="project-card proj-yumm reverse">
+    <div class="project-image">
+      <div class="project-image-label">YUMM!</div>
+      <div class="project-image-note">↑ Replace with your mockup images</div>
+    </div>
+    <div class="project-info">
+      <div class="project-number">02 / 04</div>
+      <h3 class="project-name">Yumm!</h3>
+      <p class="project-type">Cookie & Bakery Brand Identity</p>
+      <div class="project-divider"></div>
+      <p class="project-brief">
+        A bold, confident identity for a cookie and bakery brand targeting trend-conscious consumers. 
+        The oversized cobalt blue typography and irreverent slogan "Too Good To Share" create 
+        instant brand recognition across packaging, storefront, and print collateral.
+      </p>
+      <div class="project-meta">
+        <span class="meta-pill">Brand Identity</span>
+        <span class="meta-pill">Typography</span>
+        <span class="meta-pill">Packaging</span>
+        <span class="meta-pill">Storefront</span>
+        <span class="meta-pill">Stationery</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EKEN -->
+  <div class="project-card proj-eken">
+    <div class="project-image">
+      <div class="project-image-label">EKEN</div>
+      <div class="project-image-note">↑ Replace with your mockup images</div>
+    </div>
+    <div class="project-info">
+      <div class="project-number">03 / 04</div>
+      <h3 class="project-name">Eken</h3>
+      <p class="project-type">Scandinavian Furniture Brand Identity</p>
+      <div class="project-divider"></div>
+      <p class="project-brief">
+        A refined visual identity for a Scandinavian furniture brand inspired by the natural beauty 
+        of oak. The geometric monogram, muted earth palette, and delicate botanical patterns convey 
+        the brand's core values: simplicity, craftsmanship, and timeless durability.
+      </p>
+      <div class="project-meta">
+        <span class="meta-pill">Logo & Monogram</span>
+        <span class="meta-pill">Brand Guidelines</span>
+        <span class="meta-pill">Packaging</span>
+        <span class="meta-pill">Catalogue</span>
+        <span class="meta-pill">Stamp / Seal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CANNONBET -->
+  <div class="project-card proj-cannonbet reverse">
+    <div class="project-image">
+      <div class="project-image-label">CANNON BET</div>
+      <div class="project-image-note">↑ Replace with your mockup images</div>
+    </div>
+    <div class="project-info">
+      <div class="project-number">04 / 04</div>
+      <h3 class="project-name">CannonBet</h3>
+      <p class="project-type">Sports & Gaming Promotional Design</p>
+      <div class="project-divider"></div>
+      <p class="project-brief">
+        A series of high-energy promotional graphics for CannonBet spanning live sports events, 
+        seasonal campaigns, and weekly challenges. Designed to maximize engagement across social 
+        media and digital platforms — combining bold type, dynamic imagery, and motion-ready layouts.
+      </p>
+      <div class="project-meta">
+        <span class="meta-pill">Promotional Posters</span>
+        <span class="meta-pill">Social Media</span>
+        <span class="meta-pill">Sports Events</span>
+        <span class="meta-pill">Campaign Design</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header" style="padding:0 0 0 0; text-align:left;">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">What I Do</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">◈</div>
+      <div class="skill-name">Brand Identity</div>
+      <p class="skill-desc">Building complete visual systems — logos, color palettes, typography, and usage rules that keep a brand consistent at every touchpoint.</p>
+      <div class="skill-tools">
+        <span class="skill-tool">Adobe Illustrator</span>
+        <span class="skill-tool">Logo Design</span>
+        <span class="skill-tool">Visual Systems</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">✦</div>
+      <div class="skill-name">Print & Packaging</div>
+      <p class="skill-desc">Menus, packaging, stationery, catalogues — designed for production with attention to materials, print specs, and physical experience.</p>
+      <div class="skill-tools">
+        <span class="skill-tool">Adobe Photoshop</span>
+        <span class="skill-tool">Mockup Design</span>
+        <span class="skill-tool">Print Ready</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⬡</div>
+      <div class="skill-name">Digital & Social</div>
+      <p class="skill-desc">Promotional graphics, social media assets, and campaign visuals designed to stop the scroll and communicate quickly in a competitive feed.</p>
+      <div class="skill-tools">
+        <span class="skill-tool">Social Media</span>
+        <span class="skill-tool">Campaign Graphics</span>
+        <span class="skill-tool">Digital Ads</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="contact-heading">
+      Let's Build<br>
+      <span>Something.</span>
+    </h2>
+    <p class="contact-sub">
+      Available for brand identity projects, packaging design, and creative collaborations.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:shar.studioo@gmail.com" class="contact-item">
+        <span class="contact-dot"></span>
+        shar.studioo@gmail.com
+      </a>
+      <a href="tel:+9647739918679" class="contact-item">
+        <span class="contact-dot"></span>
+        (+964) 773 991 8679
+      </a>
+      <span class="contact-item">
+        <span class="contact-dot"></span>
+        Sulaymaniyah, Iraq
+      </span>
+    </div>
+    <div class="social-row">
+      <a href="#" class="social-btn">Behance</a>
+      <a href="#" class="social-btn">Instagram</a>
+      <a href="#" class="social-btn">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Shara Dlshad</div>
+  <div class="copy">© 2026 · Brand & Visual Identity Designer · Sulaymaniyah, Iraq</div>
+</footer>
+
+</body>
+</html>
